@@ -1,0 +1,18 @@
+<!doctype html>
+
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/bootstrap.css"/>
+    <title>Project 1</title>
+  </head>
+  
+  <body>
+    {% block js %} {% endblock %} {% block main %} 
+    {% for x in profiles %}
+     {{x}}
+    <br>
+    {% endfor %}
+     {% endblock %}
+    
+  </body>
+</html>

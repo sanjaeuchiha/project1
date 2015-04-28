@@ -24,6 +24,13 @@ def home():
     """Render website's home page."""
     return render_template('gameshome.html')
   
+@app.route('/game/<int:id>')
+def game(id):
+  basepath = url_for("static", filename="games/")
+  if(id==1):
+    return render_template('spaceinvaders/index.html')
+  elif(id==2):
+    return render_template('tplat.html', path = basepath+"2/")
   
 @app.route('/signup', methods =['GET', 'POST'])
 def signup():

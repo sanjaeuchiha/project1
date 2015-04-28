@@ -10,13 +10,14 @@
 
 <body>
   <ul class = "nav nav-pills nav-justified">
-    <li role="presentation" ><a href="http://info-3180-lab-1-189038.use1.nitrousbox.com:8080">Home</a></li>
-    <li class="active"><a href="http://info-3180-lab-1-189038.use1.nitrousbox.com:8080/profile">Create Profile</a></li>
+    <li role="presentation" ><a href="http://info-3180-lab-1-189038.use1.nitrousbox.com:8080/games">Home</a></li>
+    <li class="active"><a href="http://info-3180-lab-1-189038.use1.nitrousbox.com:8080/signup">Create Profile</a></li>
     <li><a href="http://info-3180-lab-1-189038.use1.nitrousbox.com:8080/profiles">View Profiles</a></li>
+    <li><a href="http://info-3180-lab-1-189038.use1.nitrousbox.com:8080/login">Login</a></li>
   </ul>
   
   
-  <form align="center" method="post" class="well"  onsubmit="success()" enctype="multipart/form-data" action="{{url_for('profile')}}">
+  <form align="center" method="post" class="well"  onsubmit="success()" enctype="multipart/form-data" action="{{url_for('signup')}}">
     <h1>Create Your Profile</h1>
      Select an image for your profile
     <br>
@@ -36,6 +37,17 @@
     Age:
     <br>
     <input type="number" name ="age" required>
+    <br><br>
+    Username:
+    <br>
+    <input type="text" name = "username" required>
+    <br><br>
+    Email:
+    <br>
+    <input type = "email" name="email" required>
+    <br><br>
+    Password:
+    <input type = "password" name = "password" required>
     <br><br>
     <input class ="btn-primary" type="submit">
     

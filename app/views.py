@@ -19,13 +19,14 @@ from flask import render_template, request, redirect, url_for, jsonify
 # Routing for your application.
 ###
 
-@app.route('/')
+@app.route('/games')
 def home():
     """Render website's home page."""
-    return render_template('home.html')
-
-@app.route('/profile', methods =['GET', 'POST'])
-def profile():
+    return render_template('gameshome.html')
+  
+  
+@app.route('/signup', methods =['GET', 'POST'])
+def signup():
   if request.method == "POST":
     filefolder ='./app/static/img'
     image = request.files['image']
@@ -35,15 +36,29 @@ def profile():
     lastname = request.form['lastname']
     sex = request.form['sex']
     age =  request.form['age']
-    entry=User(os.path.join(filefolder,imagename),firstname,lastname,sex,age)
+    username = request.form['username']
+    email = request.form['email']
+    password = request.form['password']
+    entry=User(os.path.join(filefolder,imagename),firstname,lastname,sex,age,username,email,password)
     db.session.add(entry)
     db.session.commit()    
   return render_template("signup.html")
 
+@app.route('/login', methods =['GET','POST'])
+def login():
+  if request.method =="POST":
+    fusername = request.form['username']
+    fpassword = request.form['password']
+    duser = db.session.query(User).filter(User.username==fusername).one()
+    if fusername == duser.username and fpassword == duser.password:
+      return redirect("http://info-3180-lab-1-189038.use1.nitrousbox.com:8080/games")
+  return render_template("login.html")
+  
+
 @app.route('/person')
 def person():
   first_user=db.session.query(User).first()
-  return "image:{},firstname:{}, lastname{}, sex:{}, age:{}".format(first_user.image,first_user.firstname, first_user.lastname , first_user.sex, first_user.age)
+  return "image:{},firstname:{}, lastname{}, sex:{}, age:{}, username{}, email{}".format(first_user.image,first_user.firstname, first_user.lastname , first_user.sex, first_user.age, first_user.username, first_user.email)
 
 @app.route('/profiles', methods =["POST", "GET"])
 def viewprofiles():
@@ -55,7 +70,9 @@ def viewprofiles():
                          'Firstname' : result.firstname,
                          'Lastname' : result.lastname,
                          'Sex' : result.sex,
-                         'Age' : result.age})
+                         'Age' : result.age,
+                         'Username' : result.username,
+                         'email' : result.email})
   return jsonify(users=profile_list)
 
   

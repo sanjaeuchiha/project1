@@ -1,0 +1,43 @@
+<!doctype html>
+
+<html>
+  <head>
+    <title>Project 1</title>
+    <link rel="stylesheet" href="/static/css/bootstrap-theme.css"/>
+    <link rel="stylesheet" href="/static/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="/static/css/bootstrap.css"/>
+  </head>
+
+<body>
+  <ul class = "nav nav-pills nav-justified">
+    <li role="presentation" ><a href="http://info-3180-lab-1-189038.use1.nitrousbox.com:8080/games">Home</a></li>
+    <li ><a href="http://info-3180-lab-1-189038.use1.nitrousbox.com:8080/signup">Create Profile</a></li>
+    <li><a href="http://info-3180-lab-1-189038.use1.nitrousbox.com:8080/profiles">View Profiles</a></li>
+     <li class="active"><a href="http://info-3180-lab-1-189038.use1.nitrousbox.com:8080/login">Login</a></li>
+  </ul>
+  
+  
+  <form align="center" method="post" class="well"  onsubmit="success()" enctype="multipart/form-data" action="{{url_for('login')}}">
+    <h1>Login</h1>
+    <br>
+    Username:
+    <input type="text" name="username" required>
+    <br><br>
+    Password:
+    <input type = "password" name = "password" required>
+    <br><br>
+    <input class ="btn-primary" type="submit">
+    
+  </form>
+  
+  
+<script>
+function success() {
+    alert("Successfully Signed In");
+}
+  </script>
+  </body>
+
+
+
+</html>

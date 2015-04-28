@@ -28,7 +28,11 @@ def home():
 def game(id):
   basepath = url_for("static", filename="games/")
   if(id==1):
+<<<<<<< HEAD
     return render_template('sinvade.html', path = basepath+"1/")
+=======
+    return render_template('spaceinvaders/index.html')
+>>>>>>> b956473ada5f8c989f973f7bbf91bf6ef554fe79
   elif(id==2):
     return render_template('tplat.html', path = basepath+"2/")
   

@@ -1,0 +1,60 @@
+<!doctype html>
+
+<html>
+  <head>
+    <link rel="stylesheet" href="/static/css/profile.css"/>
+     <link rel="stylesheet" href="/static/css/bootstrap-theme.css"/>
+    <link rel="stylesheet" href="/static/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="/static/css/bootstrap.css"/>
+    <title>Project 1</title>
+  </head>
+  
+  <body>
+     <ul class = "nav nav-pills nav-justified">
+    <li role="presentation" ><a href="http://info-3180-lab-1-189038.use1.nitrousbox.com:8080/games">Home</a></li>
+    <li><a href="http://info-3180-lab-1-189038.use1.nitrousbox.com:8080/signup">Create Profile</a></li>
+    <li><a href="http://info-3180-lab-1-189038.use1.nitrousbox.com:8080/profiles">View Profiles</a></li>
+    <li><a href="http://info-3180-lab-1-189038.use1.nitrousbox.com:8080/login">Login</a></li>
+    <li class="active"><a href="http://info-3180-lab-1-189038.use1.nitrousbox.com:8080/profile">My Profile</a></li>
+  </ul>
+  
+    
+  
+  <form align="center" method="post" class="well"  enctype="multipart/form-data" action="{{url_for('updateprofile')}}">
+    <h1>Update Your Profile</h1>
+     Select an image for your profile
+    <br>
+    <input align="center" type="file" name ='image' required>
+    <br>
+    First Name:
+    <br>
+    <input  type="text" name="firstname" required>
+    <br>
+    Lastname:
+    <br>
+     <input type="text" name="lastname" required>
+    <br><br>
+    Sex:
+    <input type="radio" name="sex" value="male" checked>Male   <input type="radio" name="sex" value="female" required>Female
+    <br><br>
+    Age:
+    <br>
+    <input type="number" name ="age" required>
+    <br><br>
+    Username:
+    <br>
+    <input type="text" name = "username" required>
+    <br><br>
+    Email:
+    <br>
+    <input type = "email" name="email" required>
+    <br><br>
+    Password:
+    <input type = "password" name = "password" required>
+    <br><br>
+    <input class ="btn-primary" type="submit">
+    </form>
+  </body>
+  
+  
+</html>

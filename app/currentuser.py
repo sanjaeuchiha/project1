@@ -1,0 +1,9 @@
+userid = 0
+userimage = " "
+firstname = " "
+lastname = " "
+age = 0
+sex = " "
+username = ""
+email =" "
+password = " "

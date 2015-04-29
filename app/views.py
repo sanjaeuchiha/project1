@@ -85,7 +85,36 @@ def logout():
 @app.route('/profile')
 def profile():
   entry = db.session.query(User).filter(User.username==currentuser.username).one()
+  entry.image = entry.image.replace("./app/","")
   return render_template("profile.html", uid = entry.id, ppic = entry.image ,fname = entry.firstname, lname = entry.lastname, uname         = entry.username, email = entry.email , uage = entry.age, sex = entry.sex )
+
+@app.route('/profile/update', methods =['GET', 'POST'])
+def updateprofile():
+  if request.method == "POST":
+    filefolder ='./app/static/img'
+    image = request.files['image']
+    imagename = image.filename
+    image.save(os.path.join(filefolder,imagename))
+    entry = db.session.query(User).filter(User.username==currentuser.username).one()
+    entry.image = (os.path.join(filefolder,imagename))
+    entry.firstname = request.form['firstname']
+    entry.lastname = request.form['lastname']
+    entry.sex = request.form['sex']
+    entry.age = request.form['age']
+    entry.username = request.form['username']
+    entry.email = request.form['email']
+    entry.password = request.form['password']
+    db.session.commit()
+    currentuser.userid = entry.id 
+    currentuser.image = entry.image
+    currentuser.firstname = entry.firstname 
+    currentuser.lastname = entry.lastname
+    currentuser.sex = entry.sex
+    currentuser.age = entry.age
+    currentuser.username = entry.username
+    currentuser.email = entry.email
+    currentuser.password = entry.password
+  return render_template("editprofile.html")
      
 @app.route('/person')
 def person():

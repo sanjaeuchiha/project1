@@ -13,15 +13,19 @@
     <li class="active" role="presentation" ><a href="http://info-3180-lab-1-189038.use1.nitrousbox.com:8080">Home</a></li>
     <li><a href="http://info-3180-lab-1-189038.use1.nitrousbox.com:8080/signup">Create Profile</a></li>
     <li><a href="http://info-3180-lab-1-189038.use1.nitrousbox.com:8080/profiles">View Profiles</a></li>
-     <li><a href="http://info-3180-lab-1-189038.use1.nitrousbox.com:8080/login">Login</a></li>
+    <li><a href="http://info-3180-lab-1-189038.use1.nitrousbox.com:8080/login">Login</a></li>
+    <li><a href="http://info-3180-lab-1-189038.use1.nitrousbox.com:8080/profile">My Profile</a></li>
   </ul>
 
 
 
   <a href= "http://info-3180-lab-1-189038.use1.nitrousbox.com:8080/game/2"><img src= '/static/img/tplatformertscreen.png'/></a>
   <a href= "http://info-3180-lab-1-189038.use1.nitrousbox.com:8080/game/1"><img align="right" src= '/static/img/sinvade.jpg'/></a>
+  <br>  <br>  <br>  <br>  <br>
   
-  
+  <form align="center" method="post" class="well"  enctype="multipart/form-data" action="{{url_for('logout')}}"> 
+    <input type="submit" name="logout" value ="logout">
+  </form>
 </body>
 
 

@@ -3,19 +3,29 @@
 <html>
   <head>
     <link rel="stylesheet" href="/static/css/profile.css"/>
+     <link rel="stylesheet" href="/static/css/bootstrap-theme.css"/>
+    <link rel="stylesheet" href="/static/css/bootstrap-theme.min.css"/>
+    <link rel="stylesheet" href="/static/css/bootstrap.css"/>
     <title>Project 1</title>
   </head>
   
   <body>
-    
-    <img src ="/static/img/octocat.png"/>
+     <ul class = "nav nav-pills nav-justified">
+    <li role="presentation" ><a href="http://info-3180-lab-1-189038.use1.nitrousbox.com:8080/games">Home</a></li>
+    <li><a href="http://info-3180-lab-1-189038.use1.nitrousbox.com:8080/signup">Create Profile</a></li>
+    <li><a href="http://info-3180-lab-1-189038.use1.nitrousbox.com:8080/profiles">View Profiles</a></li>
+    <li><a href="http://info-3180-lab-1-189038.use1.nitrousbox.com:8080/login">Login</a></li>
+    <li class="active"><a href="http://info-3180-lab-1-189038.use1.nitrousbox.com:8080/profile">My Profile</a></li>
+  </ul>
+    <img src ="{{ppic}}"/>
     <ul>
       <li>Today is: {{time}}</li>
-      <li>Bunny Allen</li>
-      <li>Userame: sanjaeuchiha</li>
-      <li>ID: 620067537</li>
-      <li>Age: 20</li>
-      <li>Sex: Male</li>
+      <li>{{fname}} {{lname}}</li>
+      <li>Userame: {{uname}}</li>
+      <li>Email: {{email}}</li>
+      <li>ID: {{uid}}</li>
+      <li>Age: {{uage}}</li>
+      <li> Sex:{{sex}} </li>
       <li>Highest Score: Over 9000</li>
     </ul>
   </body>

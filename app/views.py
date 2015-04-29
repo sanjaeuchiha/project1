@@ -6,6 +6,7 @@ Werkzeug Documentation:  http://werkzeug.pocoo.org/documentation/
 This file creates your application.
 """
 import os
+import currentuser
 import sys
 import json
 from app import db
@@ -14,11 +15,12 @@ from app import app
 from flask import render_template, request, redirect, url_for, jsonify
 
 
-
 ###
 # Routing for your application.
 ###
 
+#def getcurrent(cuser):
+     
 @app.route('/games')
 def home():
     """Render website's home page."""
@@ -28,11 +30,7 @@ def home():
 def game(id):
   basepath = url_for("static", filename="games/")
   if(id==1):
-<<<<<<< HEAD
     return render_template('sinvade.html', path = basepath+"1/")
-=======
-    return render_template('spaceinvaders/index.html')
->>>>>>> b956473ada5f8c989f973f7bbf91bf6ef554fe79
   elif(id==2):
     return render_template('tplat.html', path = basepath+"2/")
   
@@ -62,10 +60,33 @@ def login():
     fpassword = request.form['password']
     duser = db.session.query(User).filter(User.username==fusername).one()
     if fusername == duser.username and fpassword == duser.password:
+      currentuser.userid = duser.id 
+      currentuser.image = duser.image
+      currentuser.firstname = duser.firstname 
+      currentuser.lastname = duser.lastname
+      currentuser.sex = duser.sex
+      currentuser.age = duser.age
+      currentuser.username = duser.username
+      currentuser.email = duser.email
+      currentuser.password = duser.password
       return redirect("http://info-3180-lab-1-189038.use1.nitrousbox.com:8080/games")
   return render_template("login.html")
   
+@app.route('/logout', methods =['GET','POST'])
+def logout():
+  currentuser.id = 0
+  currentuser.image= " "
+  currentuser.firstname = " "
+  currentuser.lastname = " "
+  currentuser.sex = " "
+  currentuser.username = " "
+  return render_template("login.html")
 
+@app.route('/profile')
+def profile():
+  entry = db.session.query(User).filter(User.username==currentuser.username).one()
+  return render_template("profile.html", uid = entry.id, ppic = entry.image ,fname = entry.firstname, lname = entry.lastname, uname         = entry.username, email = entry.email , uage = entry.age, sex = entry.sex )
+     
 @app.route('/person')
 def person():
   first_user=db.session.query(User).first()
